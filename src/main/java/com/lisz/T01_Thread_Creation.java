@@ -24,3 +24,4 @@ public class T01_Thread_Creation {
 	}
 
 }
+// 启动thread的3种方式：1.继承 2.Runnable接口 3.通过线程池来启动Executor.newCachedThread()（其实内部也是用的前两种）
