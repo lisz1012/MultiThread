@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
  * 在第一个线程中抛出异常，其他线程就会进入同步代码区，有可能访问到异
  * 常产生时的数据
  */
-public class T12_synchronized_10 {
+public class T13_synchronized_10 {
 	private int count = 0;
 	
 	public synchronized void m() {
@@ -28,7 +28,7 @@ public class T12_synchronized_10 {
 		}
 	}
 	public static void main(String[] args) {
-		T12_synchronized_10 t = new T12_synchronized_10();
+		T13_synchronized_10 t = new T13_synchronized_10();
 		new Thread(()->{
 			t.m();
 		}, "t1").start();
