@@ -17,7 +17,10 @@ import java.util.concurrent.TimeUnit;
  * 单例模式的懒汉模（饿汉模型JVM初始化会保证只有一个实例）型就用volatile避免了初始化一半并且引用不为
  * null的对象返回。记得吗？懒汉模式里我们为了保证线程安全，会有两次判断，且synchronized夹在它们中间。
  * volatile还是要加的，因为new一个对象的时候，一条new语句编译成汇编之后分三步1.申请内存 2.给对象的
- * 成员变量初始化。 3.复把内存的内容赋值给INSTANCE
+ * 成员变量初始化(先使用默认 0 false null，如果有用户赋值，则用真正的的值对他初始化)。 3.把内存的
+ * 内容赋值给INSTANCE。但是如果有指令重排，会发生还没有初始化成员，却先返回了INSTANCE的引用，此时就会
+ * 拿到初始化了一半的对象。在超高超高并发的情况下，比如阿里双十一秒杀等，会出现错误。加了volatile，对这
+ * 个对象上的指令重排序就不存在了
  */
 public class T14_volatile {
 	volatile boolean running = true;
