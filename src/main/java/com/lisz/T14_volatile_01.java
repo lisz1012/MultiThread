@@ -20,9 +20,15 @@ import java.util.concurrent.TimeUnit;
  * 成员变量初始化(先使用默认 0 false null，如果有用户赋值，则用真正的的值对他初始化)。 3.把内存的
  * 内容赋值给INSTANCE。但是如果有指令重排，会发生还没有初始化成员，却先返回了INSTANCE的引用，此时就会
  * 拿到初始化了一半的对象。在超高超高并发的情况下，比如阿里双十一秒杀等，会出现错误。加了volatile，对这
- * 个对象上的指令重排序就不存在了
+ * 个对象上的指令重排序就不存在了.
+ * 
+ * 存储过程是运行在数据库里的，业务逻辑写在数据库内部，比在程序里处理效率快多了，计算向数据移动，存储过程
+ * 中写一堆判断循环select比程序里效率高的多得多，上千倍。程序读数据库搞不好还不在一台机器上，中间有网络
+ * 传输，太慢。传统公司很多都在用存储过程。MySQL深入的部分以后再说
+ * 
+ * 这些知识在工作有余力的前提下可以多研究一下
  */
-public class T14_volatile {
+public class T14_volatile_01 {
 	volatile boolean running = true;
 	void m() {
 		System.out.println("m starts");
@@ -37,7 +43,7 @@ public class T14_volatile {
 	}
 	
 	public static void main(String[] args) {
-		T14_volatile t = new T14_volatile();
+		T14_volatile_01 t = new T14_volatile_01();
 		new Thread(t::m, "t1").start();
 		try {
 			TimeUnit.SECONDS.sleep(3);
