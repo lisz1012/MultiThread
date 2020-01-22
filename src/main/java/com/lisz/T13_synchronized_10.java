@@ -29,12 +29,8 @@ public class T13_synchronized_10 {
 	}
 	public static void main(String[] args) {
 		T13_synchronized_10 t = new T13_synchronized_10();
-		new Thread(()->{
-			t.m();
-		}, "t1").start();
-		new Thread(()->{
-			t.m();
-		}, "t2").start();
+		new Thread(t::m, "t1").start();
+		new Thread(t::m, "t2").start();
 	}
 
 }
