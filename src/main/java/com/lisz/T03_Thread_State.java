@@ -2,7 +2,7 @@ package com.lisz;
 /* 线程状态不是重要的知识点，了解一下对操作系统有好处
  * 调用start之后会被系统线程调度器执行，状态整个是Runnable，而Runnable内部又有两个状态：
  * Ready 和 Running。Ready表示线程已经被扔到CPU的等待队列里面去了，在等待队列里面排着队
- * 等着让CPU运行；真正的在CPU上运行的状态见噢Running。Thread.yield()的时候，会从Running
+ * 等着让CPU运行；真正的在CPU上运行的状态叫Running。Thread.yield()的时候，会从Running
  * 切换到Ready；线程被选中执行的时候，又会被从Ready状态切换到Running。顺利地执行完线程之后
  * 线程进入Terminated状态，需要注意的是：一旦进入terminated之后就再也不能调用start从而
  * 进入NEW状态了。另外在Runnable中还有三个小状态：1.TimedWaiting 2. Waiting 3. Blocked
