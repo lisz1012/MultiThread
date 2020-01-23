@@ -9,7 +9,7 @@ O在修改的时候，突然有个线程改了O中某个引用的指向，指向
 
 AtomicXXX不需要加锁，是怎么做到的？它们用了Unsafe这个类（了解即可），里面的方法很多。这个类1.8包括之前的jdk，只有用反射才能使用，这个类不能使用的原因还跟
 classloader有关系。1.直接操作内存：allocateMemory putXX freeMemory pageSize 2. 直接生成类实例: allocateInstance 3.直接操作类或实例变量：
-objectFieldOffset,getInt,getObject. 4. CAS相关操作weakCompareAndSetReference int Long 就是Unsafew类赋予了AtomicInteger CAS的能力。这里用了
+objectFieldOffset,getInt,getObject. 4. CAS相关操作weakCompareAndSetReference int Long 就是Unsafe类赋予了AtomicInteger CAS的能力。这里用了
 弱指针，垃圾回收的时候效率比较高https://blog.csdn.net/zmx729618/article/details/54093532。看看Unsafe源码，就知道他用了饿汉模式的单例。
 Unsafe.getUnsafe()获取。Unsafe是用来直接操纵JVM里的内存的，创建对象的时候直接把内存和对象头扔在那里，根据偏移量直接修改对象内存里的值。Unsafe这个类让我们
 具备了类似写C/C++程序的能力，allocateMemory方法就类似于C里的malloc
