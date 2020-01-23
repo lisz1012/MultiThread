@@ -15,8 +15,24 @@ synchronized实现是重量级的，synchronized都是要找操作系统去申�
 CAS是Compare And Set的缩写。CAS有3个操作数，内存值V，旧的预期值A，要修改的新值B。当且仅当预期值A和内存值V相同时，将内存值V修改为B，否则什么都不做。CAS 是实现自旋锁的基础，CAS 利用 CPU 指令保证了
 操作的原子性，以达到锁的效果，至于自旋呢，看字面意思也很明白，自己旋转，翻译成人话就是循环，一般是用一个无限循环实现。compareAndSet 方法，这就是实现 CAS 的核心方法了，在使用 AtomicBoolean 的这个方法
 时，只需要传递期望值和待更新的值即可，而它里面调用了 unsafe.compareAndSwapInt(this, valueOffset, e, u) 方法，它是个 native 方法，用 c++ 实现，具体的代码就不贴了，总之是利用了 CPU 的 cmpxchg 
-指令完成比较并替换，当然根据具体的系统版本不同，实现起来也有所区别。  
+指令完成比较并替换，当然根据具体的系统版本不同，实现起来也有所区别。
+```
+m = 0;
+m++;
+CAS(0, 1)
 
+expected = read m
+//这里有人改过就重新读
+CAS(expected=0, update=1) {
+	while (true) {
+		if (m == 0) {
+			m = m + 1;
+			break;
+		}
+	}
+}
+```
+就是了乐观锁的概念，默认没人改过，一旦有人改就等待，比如m变成1了，则CAS变成了CAS(1,2)，期望值要先读一下，无锁操作。其中CAS伪方法代码在CPU原语层面上被保证了原子性，CPU直接修改那块内存的值
 注：Unsafe这个类在1.9之后不让用了  
 
 用户态和内核态的比较：  
