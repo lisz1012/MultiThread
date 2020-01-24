@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
  * 中写一堆判断循环select比程序里效率高的多得多，上千倍。程序读数据库搞不好还不在一台机器上，中间有网络
  * 传输，太慢。传统公司很多都在用存储过程。MySQL深入的部分以后再说
  * 
- * 这些知识在工作有余力的前提下可以多研究一下
+ * 这些知识在工作有余力的前提下可以多研究一下.实际写程序，volatile基本用不着，这就是用来干面试的
  */
 public class T14_volatile_01 {
 	volatile boolean running = true;
