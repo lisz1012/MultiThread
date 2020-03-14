@@ -49,7 +49,7 @@ public class T38_LockSupport {
 					}*/
 					LockSupport.park();
 				}
-				/*try { //注释掉之后必须用CountDownLatch.
+				/*try { //注释掉之后必须用CountDownLatch
 					TimeUnit.SECONDS.sleep(1);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
