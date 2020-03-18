@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
  * 跟CyclicBarrier正好相反，他是数到0就不让执行了；而CyclicBarrier是await的线程数增加到某个数才
  * 可以大家一起执行。Semaphore起到限流的作用，最多允许多少个线程并发执行。FixedThreadPool里面只有两个
  * 线程，Semaphore可以有一百个线程过来，但是同时运行的只有两个。跟线程池没有半毛钱关系。限流，类似于
- * 车道和收费站。跟钱买呢Barrier、Latch、Phaser一样都用了AQS（AbstractQueuedSynchronizer）队列。
+ * 车道和收费站。跟前面的Barrier、Latch、Phaser一样都用了AQS（AbstractQueuedSynchronizer）队列。
  * AQS是高并发最核心的内容
  */
 public class T31_Semaphore {
