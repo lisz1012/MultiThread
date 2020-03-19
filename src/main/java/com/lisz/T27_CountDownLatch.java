@@ -1,7 +1,9 @@
 package com.lisz;
 
 import java.util.concurrent.CountDownLatch;
-
+/*
+ * 同样用到了volatile status和CAS，state在CountDownLatch中的实现是还有多少次就能解开await从而继续执行
+ */
 public class T27_CountDownLatch {
 
 	public static void main(String[] args) {
