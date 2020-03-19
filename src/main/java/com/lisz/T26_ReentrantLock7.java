@@ -6,6 +6,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class T26_ReentrantLock7 {
 	// 公平锁, 先到先得，等待中的线程在一个队列里。非公平锁不检查队列里有没有线程，直接抢；公平锁反之，要进队列排队。默认非公平锁。synchronized只有非公平锁
 	// ReentrantLock也是用到了CAS。除了synchronized之外，多数用的都是CAS
+	// 非公平是上来不看等待队列直接就去抢锁，公平锁是有人排队就跟着排队
 	Lock lock = new ReentrantLock(true); 
 
 	void m() {
