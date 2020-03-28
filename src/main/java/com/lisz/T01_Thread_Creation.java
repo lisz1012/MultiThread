@@ -1,5 +1,6 @@
 package com.lisz;
-
+// Linux下，Java在创建线程的时候使用了pthread_create系统调用，这会产生用户态到内核态的转换，开销较大
+// Java线程和内核线程是一一对应的
 public class T01_Thread_Creation {
 
 	private static class MyThread extends Thread {
