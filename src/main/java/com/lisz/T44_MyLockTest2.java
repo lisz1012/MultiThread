@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
-
+// AQS最核心的是volatile int state这个变量，表示被同一个线程重入了多少次每入一次+1，每释放一次-1，大于0表示锁被某个线程获得，减到0就表示释放了
 public class T44_MyLockTest2 {
     public static int m = 0;
     public static MyLock lock = new MyLock();
