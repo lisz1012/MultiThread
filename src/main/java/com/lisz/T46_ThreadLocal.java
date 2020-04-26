@@ -2,7 +2,7 @@ package com.lisz;
 
 import java.util.concurrent.TimeUnit;
 
-// 这里一个线程里的修改影响到了另一个线程里的内容，如何做呢？见 T46_ThreadLocal2
+// 这里一个线程里的修改影响到了另一个线程里的内容，如何做呢？见 T47_ThreadLocal2
 public class T46_ThreadLocal {
     static volatile Person p = new Person();
 

@@ -13,6 +13,7 @@ Java的引用有4种：强软弱虚（背过记住）。VarHandle是强引用
           查看WeakHashMap，看AQS的unlock源码）一个典型的应用就是ThreadLocal：曾记否？
           ThreadLocal有个内部类叫ThreadLocalMap，每个Thread对象都有一个 threadLocals
           变量指向他，这个Map中的Entry就继承了WeakReference
+4. 虚引用：给JVM或者其他的框架（如Netty）的开发者调用的，对于堆外内存的回收作出相应
  */
 public class T50_WeakReference {
     public static void main(String[] args) {
@@ -34,7 +35,7 @@ public class T50_WeakReference {
          l对象，但是会等到Thread结束，整个Map被回收之后才能清理它，有很多线程是长期存在的，
          所以就造成了内存泄漏。根本原因就是这个Map偏偏是属于Thread对象的
          弱引用的情况下，ThreadLocal 对象确实会被回收，但是map里面的key就指向了null，这样
-         他就不会被访问到了，那个M对象也就永远在那儿了，还是会有内存泄漏。怎么办呢？给我记住
+         他就不会被访问到了，但那个作为M对象也就永远在那儿了，还是会有内存泄漏。怎么办呢？给我记住
          咯：使用ThreadLocal，里面set的那个对象不用了，必须手动remove掉！那value那个M
          为什么不能也是弱引用指向他呢？这样的话他可能只有一个弱引用指向，直接被回收
          */

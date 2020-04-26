@@ -22,10 +22,10 @@ public class T49_SoftReference {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(m.get()); //一共20M的堆，只用了15M所以不会被回收
+        System.out.println(m.get()); //一共20M的堆，只用了10M所以不会被回收
 
         // 再分配一个数组，heap将装不下，这时候系统会垃圾回收，先回收一次，如果不够，会把软引用干掉，不用显式调用System.gc()
-        byte b[] = new byte[1024 * 1024 * 15]; //内存不够用，强引用会挤掉弱引用。先gc清理掉弱引用，再分配
+        byte b[] = new byte[1024 * 1024 * 15]; //内存不够用，强引用会挤掉软引用。先gc清理掉软引用，再分配
         System.out.println(m.get());
     }
 }
