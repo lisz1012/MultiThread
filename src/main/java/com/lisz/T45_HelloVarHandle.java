@@ -27,6 +27,7 @@ public class T45_HelloVarHandle {
     public static void main(String[] args) {
         T45_HelloVarHandle t = new T45_HelloVarHandle();
 
+        // MethodHandles.lookup().findVarHandle的时候并没有交代找哪个对象的x值，这里要告诉他
         System.out.println((int)handle.get(t));
         handle.set(t, 9);
         System.out.println(t.x);
@@ -35,7 +36,7 @@ public class T45_HelloVarHandle {
         System.out.println(t.x);
 
         int x1 = (int)handle.getAndAdd(t, 10); // Atomic，但是 x = x + 10或者x += 10不是原子性的，要加锁
-        System.out.println(x1);
-        System.out.println(t.x);
+        System.out.println(x1); // 10
+        System.out.println(t.x); // 20
     }
 }
