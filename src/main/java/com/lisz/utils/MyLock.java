@@ -1,4 +1,4 @@
-package com.lisz;
+package com.lisz.utils;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
