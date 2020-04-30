@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 // 高并发下线性存储容器，多考虑Queue（ConcurrentLinkedQueue），少考虑List！！！（想随机访问怎么办？）
 // ConcurrentLinkedQueue往外poll的时候都是CAS的无锁化的原子操作，所以效率高很多
 // CAS一定就比synchronized效率高吗？不一定，要看并发量的高低、锁定的那段代码执行的时间
-// 单线程一般就用HashMap、ArrayList；高并发的时候执行时间短就应该用CurrentHashMap、ConcurrentLinkedQueue；执行时间长，并发量又不是特别高，用synchronizedMap
+// 单线程一般就用HashMap、ArrayList；高并发的时候执行时间短就应该用ConcurrentHashMap、ConcurrentLinkedQueue；执行时间长，并发量又不是特别高，用synchronizedMap
 // 总之要通过压测才能确定容器。面向接口的编程和设计：接口只是说明业务逻辑，下面有好几套实现，在不同的并发下用不同的实现
 public class TicketSeller4 {
     static Queue<String> tickets = new ConcurrentLinkedQueue<>();
