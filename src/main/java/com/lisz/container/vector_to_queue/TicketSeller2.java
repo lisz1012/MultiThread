@@ -1,4 +1,4 @@
-package com.lisz.comtainer.vector_to_queue;
+package com.lisz.container.vector_to_queue;
 
 import java.util.Vector;
 import java.util.concurrent.TimeUnit;

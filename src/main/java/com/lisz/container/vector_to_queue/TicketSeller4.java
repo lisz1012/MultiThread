@@ -1,4 +1,4 @@
-package com.lisz.comtainer.vector_to_queue;
+package com.lisz.container.vector_to_queue;
 
 import java.util.Queue;
 import java.util.Vector;
@@ -22,7 +22,7 @@ public class TicketSeller4 {
             new Thread(()->{
                 // 换成while中判断tickets是否为空、睡觉10ms且删除if (s == null) break;则还是会出前面的问题
                 while (true) {
-                    String s = tickets.poll();
+                    String s = tickets.poll(); // ConcurrentLinkedQueue 做了同步，可以就理解为是原子性的。CAS实现。下面加不加sleep都不影响。如果把s拿到最外面去，会影响
                     if (s == null) break;
                     System.out.println("销售了 " + s);
                 }
