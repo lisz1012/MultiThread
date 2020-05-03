@@ -14,7 +14,7 @@ public class T12_TransferQueue_Print_Alternatively {
             for (char c = 'a'; c <= 'z'; c++) {
                 try {
                     System.out.print(q.take());
-                    q.transfer(c - 'a'); // 用put不成立，用于不是SynchronousQueue，不满的时候put就会去做自己的事情，而不会等的同步
+                    q.transfer(c - 'a'); // 用put不成立，由于不是SynchronousQueue，不满的时候put就会去做自己的事情，而不会等的同步
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -24,7 +24,7 @@ public class T12_TransferQueue_Print_Alternatively {
         new Thread(()->{
             for (int i = 1; i <=26; i++) {
                 try {
-                    q.transfer(i); // 用put不成立，用于不是SynchronousQueue，不满的时候put就会去做自己的事情，而不会等的同步
+                    q.transfer(i); // 用put不成立，由于不是SynchronousQueue，不满的时候put就会去做自己的事情，而不会等的同步
                     System.out.print((char)(q.take() + 'a'));
                 } catch (InterruptedException e) {
                     e.printStackTrace();

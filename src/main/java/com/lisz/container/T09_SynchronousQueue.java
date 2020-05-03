@@ -10,7 +10,7 @@ public class T09_SynchronousQueue {
         BlockingQueue<String> strs = new SynchronousQueue<>();
         new Thread(()->{
             try {
-                System.out.println(strs.take());
+                System.out.println(strs.take());//真正的这个take可能在put之前或者之后运行，但线程的开启一定要在put之前，以为没有消费者put会阻塞
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
