@@ -22,7 +22,7 @@ public class T11_SynchronizedQueue_Print_Alternatively {
         new Thread(()->{
             for (int i = 1; i <=26; i++) {
                 try {
-                    q.put(i);
+                    q.put(i); // 由于容量为0，没有消费者就block在这儿
                     System.out.print((char)(q.take() + 'a'));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
