@@ -6,6 +6,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+// 相当于分了两个等待队列，我们可以精确指定哪个等待队列里的线程开始运行，写到这个程度面试官会高看一眼
 public class T05_Lock_Condition {
     private Thread t1 = null;
     private Thread t2 = null;
