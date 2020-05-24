@@ -68,7 +68,7 @@ public class T14_ForkJoinPool {
             int mid = start + ((end - start) >> 1);
             AddTask t1 = new AddTask(start, mid);
             AddTask t2 = new AddTask(mid + 1, end);
-            t1.fork();
+            t1.fork(); // fork()会往工作队列里面扔这个任务t1本身
             t2.fork();
             return t1.join() + t2.join();
         }

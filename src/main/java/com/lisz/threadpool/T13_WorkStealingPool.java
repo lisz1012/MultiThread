@@ -1,5 +1,6 @@
 package com.lisz.threadpool;
 
+import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -18,6 +19,24 @@ public class T13_WorkStealingPool {
         service.execute(new R(2000));
         service.execute(new R(2000));
         service.execute(new R(2000));
+        service.execute(new R(2000));
+        service.execute(new R(2000));
+        service.execute(new R(2000));
+        service.execute(new R(2000));
+        service.execute(new R(2000));
+        service.execute(new R(2000));
+        service.execute(new R(2000));
+        service.execute(new R(2000));
+        service.execute(new R(2000));
+        service.execute(new R(2000));
+        service.execute(new R(2000));
+        service.execute(new R(2000));
+
+        try {
+            System.in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private static class R implements Runnable {
@@ -38,3 +57,22 @@ public class T13_WorkStealingPool {
         }
     }
 }
+/*打印如下，可见ForkJoinPool-1-worker-19偷到了任务
+ForkJoinPool-1-worker-19
+ForkJoinPool-1-worker-5
+ForkJoinPool-1-worker-15
+ForkJoinPool-1-worker-29
+ForkJoinPool-1-worker-11
+ForkJoinPool-1-worker-1
+ForkJoinPool-1-worker-25
+ForkJoinPool-1-worker-7
+ForkJoinPool-1-worker-31
+ForkJoinPool-1-worker-21
+ForkJoinPool-1-worker-3
+ForkJoinPool-1-worker-23
+ForkJoinPool-1-worker-13
+ForkJoinPool-1-worker-27
+ForkJoinPool-1-worker-9
+ForkJoinPool-1-worker-17
+ForkJoinPool-1-worker-19
+ */
