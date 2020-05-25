@@ -24,7 +24,7 @@ public class T07_CompletableFuture {
                          .thenApply(s->"price: " + s) // 把一个String转成另一个String
                          .thenAccept(System.out::println); // 依次对上一步返回的结果执行操作
 
-        CompletableFuture.allOf(futureTM, futureTB, futureJD).join(); // 全部完成之后才join, 继续往下运行。相当于甩出3个线程然后分别执行，最后join。anyOf是任何一个执行完了就可以往下走
+        CompletableFuture.allOf(futureTM, futureTB, futureJD).join(); // 全部完成之后才join, 继续往下运行。相当于甩出3个线程然后分别执行，最后join, 有点类似CyclicBarrier。anyOf是任何一个执行完了就可以往下走
         System.out.println("Parallel call time: " + (System.currentTimeMillis() - start));
 
         try {
