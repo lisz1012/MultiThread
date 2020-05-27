@@ -16,6 +16,8 @@ api: http://lmax-exchange.github.io/disruptor/docs/index.html
 
 maven: https://mvnrepository.com/artifact/com.lmax/disruptor
 
+中文介绍参考：https://www.cnblogs.com/linjiqin/p/7436034.html
+
 ## Disruptor的特点
 
 对比ConcurrentLinkedQueue : 链表实现
