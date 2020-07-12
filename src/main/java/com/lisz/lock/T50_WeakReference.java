@@ -28,11 +28,11 @@ public class T50_WeakReference {
                     ^
                     |弱引用
                     |     map
-                    key ------> M对象
+                    key ------> M对象 (Key是ThreadLocal对象，Thread对象持有ThreadLocalMap对象的引用)
          而Thread的Map：threadLocals中的那个key是通过
          一个弱引用指向了ThreadLocal对象。key指向ThreadLocal对象的箭头如果换成了强引用，
-         则会：方法里定义的ThreadLocal对象，方法结束之后tl消失，按理说应该回收ThreadLoca
-         l对象，但是会等到Thread结束，整个Map被回收之后才能清理它，有很多线程是长期存在的，
+         则会：方法里定义的ThreadLocal对象，方法结束之后tl消失，按理说应该回收ThreadLocal
+         对象，但是会等到Thread结束，整个Map被回收之后才能清理它，有很多线程是长期存在的，
          所以就造成了内存泄漏。根本原因就是这个Map偏偏是属于Thread对象的
          弱引用的情况下，ThreadLocal 对象确实会被回收，但是map里面的key就指向了null，这样
          他就不会被访问到了，但那个作为M对象也就永远在那儿了，还是会有内存泄漏。怎么办呢？给我记住
