@@ -36,8 +36,9 @@ public class T50_WeakReference {
          所以就造成了内存泄漏。根本原因就是这个Map偏偏是属于Thread对象的
          弱引用的情况下，ThreadLocal 对象确实会被回收，但是map里面的key就指向了null，这样
          他就不会被访问到了，但那个作为M对象也就永远在那儿了，还是会有内存泄漏。怎么办呢？给我记住
-         咯：使用ThreadLocal，里面set的那个对象不用了，必须手动remove掉！那value那个M
-         为什么不能也是弱引用指向他呢？这样的话他可能只有一个弱引用指向，直接被回收
+         咯：使用ThreadLocal，里面set的那个对象不用了，必须在方法结束前手动remove掉！那value那个M
+         为什么不能也是弱引用指向他呢？这样的话他可能只有一个弱引用指向，直接被回收。
+         这里其实是有了一个隐藏的内存逃逸
          */
         ThreadLocal<M> tl = new ThreadLocal<>();
         tl.set(new M());
