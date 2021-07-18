@@ -38,7 +38,7 @@ public class T50_WeakReference {
          他就不会被访问到了，但那个作为M对象也就永远在那儿了，还是会有内存泄漏。怎么办呢？给我记住
          咯：使用ThreadLocal，里面set的那个对象不用了，必须在方法结束前手动remove掉！那value那个M
          为什么不能也是弱引用指向他呢？这样的话他可能只有一个弱引用指向，直接被回收。
-         这里其实是有了一个隐藏的内存逃逸
+         这里其实是有了一个隐藏的内存逃逸, ThreadLocalMap对象与线程同寿！
          */
         ThreadLocal<M> tl = new ThreadLocal<>();
         tl.set(new M());
