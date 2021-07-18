@@ -39,6 +39,7 @@ public class T50_WeakReference {
          咯：使用ThreadLocal，里面set的那个对象不用了，必须在方法结束前手动remove掉！那value那个M
          为什么不能也是弱引用指向他呢？这样的话他可能只有一个弱引用指向，直接被回收。
          这里其实是有了一个隐藏的内存逃逸, 方法可能早已退出，但ThreadLocalMap对象与线程同寿！
+         不知道将来的版本有没有类似try(){}的功能，把不用了的ThreadLocal对象自动remove掉
          */
         ThreadLocal<M> tl = new ThreadLocal<>();
         tl.set(new M());
