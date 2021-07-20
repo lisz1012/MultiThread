@@ -13,7 +13,7 @@ Java的引用有4种：强软弱虚（背过记住）。VarHandle是强引用
           查看WeakHashMap，看AQS的unlock源码）一个典型的应用就是ThreadLocal：曾记否？
           ThreadLocal有个内部类叫ThreadLocalMap，每个Thread对象都有一个 threadLocals
           变量指向他，这个Map中的Entry就继承了WeakReference
-4. 虚引用：给JVM或者其他的框架（如Netty）的开发者调用的，对于堆外内存的回收作出相应
+4. 虚引用：给JVM或者其他的框架（如Netty）的开发者调用的，对于堆外内存的回收作出相应.
  */
 public class T50_WeakReference {
     public static void main(String[] args) {
