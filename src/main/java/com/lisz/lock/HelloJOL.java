@@ -12,13 +12,16 @@ public class HelloJOL {
         Object o = new Object();
         String s = ClassLayout.parseInstance(o).toPrintable();
         System.out.println(s);
+        System.out.println("hash code: " + o.hashCode());
 
-//        T t = new T();
-//        String s2 = ClassLayout.parseInstance(t).toPrintable();
-//        System.out.println(s2);
+        T t = new T();
+        String s2 = ClassLayout.parseInstance(t).toPrintable();
+        System.out.println(s2);
+
         synchronized (o) {
             String s3 = ClassLayout.parseInstance(o).toPrintable();
             System.out.println(s3);
+            System.out.println("hash code: " + o.hashCode());
         }
     }
 }
