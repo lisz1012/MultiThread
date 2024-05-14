@@ -23,5 +23,9 @@ public class HelloJOL {
             System.out.println(s3);
             System.out.println("hash code: " + o.hashCode());
         }
+
+        String s4 = ClassLayout.parseInstance(o).toPrintable();
+        System.out.println(s4);
+        System.out.println("hash code: " + o.hashCode());
     }
 }
