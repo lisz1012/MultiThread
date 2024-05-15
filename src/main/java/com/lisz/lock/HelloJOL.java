@@ -5,7 +5,7 @@ import org.openjdk.jol.info.ClassLayout;
 public class HelloJOL {
     private static class T {
         int m = 8;
-        String s = "hello";
+        String s = "hello.";
     }
 
     public static void main(String[] args) {
