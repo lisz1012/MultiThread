@@ -4,7 +4,7 @@ import com.lisz.utils.M;
 
 import java.lang.ref.WeakReference;
 /*
-Java的引用有4种：强软弱虚（背过记住）。VarHandle是强引用
+Java的引用有4种：强软弱虚（背过记住）。VarHandle是强引用.
 1. 强引用：Object o = new Object(); o就是指向new 出来对象的强引用，就是普通的引用。只要有个
    引用指向他，垃圾回收器就一定不会回收他；只有没有引用指向他了，才会被回收
 2. 软引用：GC不一定能回收掉，但当heap不够的时候，率先干掉弱引用
