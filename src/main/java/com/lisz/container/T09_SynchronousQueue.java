@@ -4,7 +4,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.SynchronousQueue;
 
 // 这类queue容量为0，是用来让一个线程给另外一个线程下达任务的。容量为0，本质上就是要直接递到另外一个线程手里才可以。两个线程直接交换数据
-// 用出最大的一个Queue、取任务、线程调度都用它
+// 用出最大的一个Queue、取任务、线程调度都用它.
 public class T09_SynchronousQueue {
     public static void main(String[] args) throws Exception {
         BlockingQueue<String> strs = new SynchronousQueue<>();
