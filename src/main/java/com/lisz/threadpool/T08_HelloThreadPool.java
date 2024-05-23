@@ -6,7 +6,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-// 线程池的7个参数要背过！
+// 线程池的7个参数要背过！!
 public class T08_HelloThreadPool {
     private static class Task implements Runnable{
         private int i;
